@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\SkyDrive\BCIT\_3973_2014\lessons\07 forms and annotations\HtmlHelpers\MVC01\Models\Northwind\NorthwindModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Paolo\Dropbox\School\COMP 4976 - Web Application with ASP\Labs\w06a\HtmlHelpers\MVC01\Models\Northwind\NorthwindModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -1,4 +1,4 @@
-﻿@model MVC01.Models.Northwind.Product
+﻿@*@model MVC01.Models.Northwind.Product
 @{ ViewBag.Title = "Edit Product"; }
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -20,7 +20,7 @@
         </p>
         <p><input type="submit" value="Save" /></p>
     </fieldset>
-}
+}*@
 
 @*@using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -44,11 +44,11 @@
     </fieldset>
 }*@
 
-@*@using (Html.BeginForm()) {
+@using (Html.BeginForm()) {
 <fieldset>
     @Html.AntiForgeryToken()
     <legend>@ViewBag.Title</legend>
     @Html.EditorForModel()
     <p><input type="submit" value="Save" /></p>
 </fieldset>
-}*@
+}

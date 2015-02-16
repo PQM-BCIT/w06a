@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -51,6 +52,11 @@ namespace MVC01.Controllers
                 .OrderBy(c => c.CategoryName),
                 "CategoryID", "CategoryName", product.CategoryID);
 
+            ViewBag.Suppliers = new SelectList(
+                ctx.Suppliers
+                .OrderBy(c => c.CompanyName),
+                "SupplierID", "CompanyName", product.SupplierID);
+
             return View(product);
         }
 
@@ -66,8 +72,33 @@ namespace MVC01.Controllers
                 ctx.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(product);
         }
 
+        // GET: /Product/Create
+        public ActionResult Create()
+        {
+            ViewBag.CategoryID = new SelectList(ctx.Categories, "CategoryID", "CategoryName");
+            ViewBag.SupplierID = new SelectList(ctx.Suppliers, "SupplierID", "CompanyName");
+            return View();
+        }
+
+        // POST: /Product/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ProductID,ProductName,SupplierID,CategoryID,QuantityPerUnit,UnitPrice,UnitsInStock,UnitsOnOrder,ReorderLevel,Discontinued")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                ctx.Products.Add(product);
+                ctx.SaveChanges();
+                return View();
+            }
+
+            ViewBag.CategoryID = new SelectList(ctx.Categories, "CategoryID", "CategoryName", product.CategoryID);
+            ViewBag.SupplierID = new SelectList(ctx.Suppliers, "SupplierID", "CompanyName", product.SupplierID);
+            return View(product);
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace MVC01.Models.Northwind
         [Display(Name = "Product Name")]
         [StringLength(30, ErrorMessage = "The {0} must be between {2} and {1} characters.", MinimumLength = 5)]
         [ExcludeChar("/.,!@#$%", ErrorMessage = "Name contains invalid character.")]
+        [RegularExpression(@"^([a-zA-Z0-9]+[^a-zA-Z0-9]*){1,8}$", ErrorMessage = "Maximum 3 words")]
         public object ProductName { get; set; }
 
         [Required(ErrorMessage = "Unit price is required.")]
@@ -29,8 +30,10 @@ namespace MVC01.Models.Northwind
         [ScaffoldColumn(false)]
         public object ReorderLevel { get; set; }
 
-        [UIHint("CategoryDropDown")]
+        [UIHint("_CategoryDropDown")]
         public object CategoryID { get; set; }
 
+        [UIHint("_SupplierDropDown")]
+        public object SupplierID { get; set; }
     }
 }
